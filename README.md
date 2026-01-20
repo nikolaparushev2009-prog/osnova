@@ -1,0 +1,2 @@
+# osnova
+kodove
