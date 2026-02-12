@@ -1,4 +1,5 @@
 package koko;
 public interface Skill {
-void specialMove(Fighter opponent);
+    int skillBonus();   
+    void showStyle(); 
 }

@@ -1,6 +1,6 @@
 package koko;
 public interface CounterAttack {
-    void counter(Fighter attacker);
-
+    void counterAttack(Fighter attacker);
 }
+
 
