@@ -1,4 +1,4 @@
-package koko;
+package combat.sports;
 public abstract class Fighter {
     protected String name;
     protected int strength;

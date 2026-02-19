@@ -1,4 +1,4 @@
-package koko;
+package combat.sports;
 public class Nutrition {
     public void eat(String food, Fighter fighter) {
         switch (food.toLowerCase()) {

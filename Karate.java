@@ -1,5 +1,6 @@
-package koko;
-public  class Karate extends Fighter implements Recovery, Skill, CounterAttack {
+package combat.sports;
+public class Karate extends Fighter implements Recovery, Skill, CounterAttack, Bleeding {
+    private boolean isBleeding = true;
     public Karate(String name, int strength, int stamina) {
         super(name, strength, stamina);
     }
@@ -7,40 +8,45 @@ public  class Karate extends Fighter implements Recovery, Skill, CounterAttack {
         int damage = strength + skillBonus();
         opponent.stamina -= damage;
         fatigue += 8;
-        System.out.println(name + "performs karate kick");
-        System.out.println(opponent.name + "loses " + damage + "stamina");
+        System.out.println(name + " performs a karate kick!");
+        System.out.println(opponent.name + " loses " + damage + " stamina.");
     }
     public void counterAttack(Fighter opponent) {
         int damage = (strength + skillBonus()) / 2 + 3;
         opponent.stamina -= damage;
-        System.out.println(name + "prepares a light kick");
-        System.out.println(opponent.name + "loses" + damage + "stamina from counteratack");
+        System.out.println(name + " performs a lighthning counter kick!");
+        System.out.println(opponent.name + " loses " + damage + " stamina from counterattack.");
     }
     public void criticalHit(Fighter opponent) {
         double chance = Math.random();
-        //podgotvia chislo ot 0 do 1
         if (chance <= 0.2) {
             opponent.stamina = 0;
-            System.out.println("Critical hit!!!!");
-            System.out.println(name + "Knockout kick");
+            System.out.println(" Critical hit");
+            System.out.println(name + " delivers a devastating knockout kick");
         } else {
-            System.out.println(name + "Try knockout kick,but he failed!");
+            System.out.println(name + " tried a critical hit but failed!");
+        }
+    }
+    public void BleedingDamage() {
+        if (isBleeding) {
+            int loss = (int) (stamina * 0.07); // 7% загуба
+            stamina -= loss;
+            System.out.println(name + " is bleeding! -" + loss + " stamina.");
         }
     }
     public void rest() {
         fatigue -= 10;
         if (fatigue < 0) fatigue = 0;
-        System.out.println(name + "Rest and recover");
+        System.out.println(name + "Reduces fatigue.");
     }
     public void recover() {
         stamina += 15;
-        System.out.println(name + "Recover stamina");
+        System.out.println(name + " recovers stamina.");
     }
-    @Override
     public int skillBonus() {
         return 7;
     }
     public void showStyle() {
-        System.out.println("Karate style");
+        System.out.println("Karate Style ");
     }
 }
